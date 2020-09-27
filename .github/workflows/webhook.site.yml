@@ -30,6 +30,4 @@ jobs:
     #  uses: mxschmitt/action-tmate@v3
     - name: Webhook Action
       shell: bash
-      run: |
-        echo "output = ${{ steps.custom_webhook.outputs.output }}"
-        echo "Program finished successfully"
+      run: echo "${{ steps.custom_webhook.outputs.output }}"
