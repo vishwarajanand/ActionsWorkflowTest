@@ -24,7 +24,14 @@ jobs:
         url: https://webhook.site/7693fbac-7218-43f4-9dce-4c0d6dc0681c
         # Obtained from https://webhook.site/ for testing, have also set {"success":"true"} as sample response!
         method: GET
+    - uses: actions/checkout@v2
+    - name: Setup tmate session
+      uses: mxschmitt/action-tmate@v3
     - name: Webhook Action
       run: |
         # $output = '${{ steps.custom_webhook.outputs.output }}' # | ConvertFrom-Json
-        Write-Host "Response provided: $($output)" # "Time from output $($output.time) statusCode $($output.statusCode) data $($output.data)"
+        # Write-Host "Time from output $($output.time) statusCode $($output.statusCode) data $($output.data)"
+        echo "Response provided: ${{ steps.custom_webhook.outputs.output }}"
+    - id: bash_echo
+      run: echo "::set-output name=webhook-output::$(echo $steps.custom_webhook.outputs.output)"
+      shell: bash
