@@ -30,9 +30,7 @@ jobs:
     #  uses: mxschmitt/action-tmate@v3
     - name: Webhook Action
       run: |
-        # $output = '${{ steps.custom_webhook.outputs.output }}' # | ConvertFrom-Json
-        # Write-Host "Time from output $($output.time) statusCode $($output.statusCode) data $($output.data)"
+        # $output = '${{ steps.custom_webhook.outputs.output }}' | ConvertFrom-Json
+        # Write-Host "Time from output ${{ $output.time }} statusCode ${{ $output.statusCode }} data ${{ $output.data }}"
         echo "Response provided: ${{ steps.custom_webhook.outputs.output }}"
-    # - id: bash_echo
-    #  run: echo "::set-output name=webhook-output::$(echo $steps.custom_webhook.outputs.output)"
-    #  shell: bash
+      shell: bash
