@@ -1,0 +1,29 @@
+name: Python application
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python 3.8
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        # pip install flake8 pytest
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+    - uses: satak/webrequest-action@master
+      with:
+        url: https://webhook.site/7693fbac-7218-43f4-9dce-4c0d6dc0681c
+        # Obtained from https://webhook.site/ for testing, have also set {"success":"true"} as sample response!
+        method: GET
+    - name: Webhook Action
+      run: |
+        $output = '${{ steps.webhook.outputs.output }}' | ConvertFrom-Json
+        Write-Host "Time from output $($output.time) statusCode $($output.statusCode) data $($output.data)"
