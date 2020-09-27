@@ -30,10 +30,10 @@ jobs:
     #  uses: mxschmitt/action-tmate@v3
     - name: Webhook Action
       shell: bash
-      run: 
+      run: |
         echo "output = ${{ steps.custom_webhook.outputs.output }}"
-        # echo "Response provided: ${{ $(steps.custom_webhook.outputs.output) }}"
-        # echo "Collecting output from webhook req"
-        # $output = '${{ steps.custom_webhook.outputs.output }}' | ConvertFrom-Json
-        # Write-Host "Time from output ${{ $output.time }} statusCode ${{ $output.statusCode }} data ${{ $output.data }}"
-        # echo "Program finished successfully"
+        # (echo "Response provided: ${{ $(steps.custom_webhook.outputs.output) }}")
+        # (echo "Collecting output from webhook req")
+        # ($output = '${{ steps.custom_webhook.outputs.output }}' | ConvertFrom-Json)
+        # (Write-Host "Time from output ${{ $output.time }} statusCode ${{ $output.statusCode }} data ${{ $output.data }}")
+        echo "Program finished successfully"
