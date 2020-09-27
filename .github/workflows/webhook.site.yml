@@ -29,10 +29,11 @@ jobs:
     # - name: Setup tmate session
     #  uses: mxschmitt/action-tmate@v3
     - name: Webhook Action
-      run: |
-        echo "Collecting output from webhook req"
+      shell: bash
+      run: 
+        echo "output = ${{ steps.custom_webhook.outputs.output }}"
+        # echo "Response provided: ${{ $(steps.custom_webhook.outputs.output) }}"
+        # echo "Collecting output from webhook req"
         # $output = '${{ steps.custom_webhook.outputs.output }}' | ConvertFrom-Json
         # Write-Host "Time from output ${{ $output.time }} statusCode ${{ $output.statusCode }} data ${{ $output.data }}"
-        echo "Response provided: ${{ steps.custom_webhook.outputs.output }}"
-        echo "Program finished successfully"
-      shell: bash
+        # echo "Program finished successfully"
