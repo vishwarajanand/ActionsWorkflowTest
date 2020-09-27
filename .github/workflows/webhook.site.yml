@@ -25,13 +25,14 @@ jobs:
         # Obtained from https://webhook.site/ for testing, have also set {"success":"true"} as sample response!
         method: GET
     - uses: actions/checkout@v2
-    - name: Setup tmate session
-      uses: mxschmitt/action-tmate@v3
+    # gives a tmate session to connect from github actions URL
+    # - name: Setup tmate session
+    #  uses: mxschmitt/action-tmate@v3
     - name: Webhook Action
       run: |
         # $output = '${{ steps.custom_webhook.outputs.output }}' # | ConvertFrom-Json
         # Write-Host "Time from output $($output.time) statusCode $($output.statusCode) data $($output.data)"
         echo "Response provided: ${{ steps.custom_webhook.outputs.output }}"
-    - id: bash_echo
-      run: echo "::set-output name=webhook-output::$(echo $steps.custom_webhook.outputs.output)"
-      shell: bash
+    # - id: bash_echo
+    #  run: echo "::set-output name=webhook-output::$(echo $steps.custom_webhook.outputs.output)"
+    #  shell: bash
