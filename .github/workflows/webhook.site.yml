@@ -19,11 +19,12 @@ jobs:
         # pip install flake8 pytest
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - uses: satak/webrequest-action@master
+      id: custom_webhook
       with:
         url: https://webhook.site/7693fbac-7218-43f4-9dce-4c0d6dc0681c
         # Obtained from https://webhook.site/ for testing, have also set {"success":"true"} as sample response!
         method: GET
     - name: Webhook Action
       run: |
-        $output = '${{ steps.webhook.outputs.output }}' # | ConvertFrom-Json
+        $output = '${{ steps.custom_webhook.outputs.output }}' | ConvertFrom-Json
         Write-Host "Time from output $($output.time) statusCode $($output.statusCode) data $($output.data)"
