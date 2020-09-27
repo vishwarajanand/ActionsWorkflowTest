@@ -26,5 +26,5 @@ jobs:
         method: GET
     - name: Webhook Action
       run: |
-        $output = '${{ steps.custom_webhook.outputs.output }}' | ConvertFrom-Json
+        $output = '${{ steps.custom_webhook.outputs.output }}' # | ConvertFrom-Json
         Write-Host "Time from output $($output.time) statusCode $($output.statusCode) data $($output.data)"
