@@ -1,2 +1,2 @@
 # ActionsWorkflowTest
-Testing the Github actions and workflows.
+Contains quickstart samples for Github actions and workflows.
